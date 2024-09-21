@@ -14,6 +14,7 @@ You can view the live demo of this portfolio at: [https://rdinkar.github.io/port
 - Interactive project modals
 - Mobile-friendly navigation menu
 - Google Analytics integration for visitor tracking
+- Downloadable resume
 
 ## Technologies Used
 

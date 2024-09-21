@@ -477,3 +477,36 @@ main {
 .dark-mode #contact a:hover {
   color: var(--secondary-color);
 }
+
+.download-resume {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: var(--transition);
+  margin-top: 1rem;
+}
+
+.download-resume:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.dark-mode .download-resume {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.dark-mode .download-resume:hover {
+  background-color: var(--accent-color);
+}
+
+@media screen and (max-width: 768px) {
+  .download-resume {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
