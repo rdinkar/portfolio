@@ -13,6 +13,7 @@ You can view the live demo of this portfolio at: [https://rdinkar.github.io/port
 - Smooth scrolling navigation
 - Interactive project modals
 - Mobile-friendly navigation menu
+- Google Analytics integration for visitor tracking
 
 ## Technologies Used
 
