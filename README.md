@@ -2,6 +2,10 @@
 
 This repository contains the source code for Rahul Dinkar's personal portfolio website. The site showcases Rahul's skills, experience, and projects as a Senior Software Engineer specializing in frontend development.
 
+## Live Demo
+
+You can view the live demo of this portfolio at: [https://rdinkar.github.io/portfolio/](https://rdinkar.github.io/portfolio/)
+
 ## Features
 
 - Responsive design for various screen sizes
