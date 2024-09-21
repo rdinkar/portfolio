@@ -13,19 +13,23 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="./styles.css" />
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-2N872D2WD8"
-    ></script>
+    <!-- Google Analytics -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+      // Check if the current URL is the live website
+      if (window.location.hostname === "rdinkar.github.io") {
+        // Google tag (gtag.js)
+        var script = document.createElement("script");
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-2N872D2WD8";
+        script.async = true;
+        document.head.appendChild(script);
 
-      gtag("config", "G-2N872D2WD8");
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-2N872D2WD8");
+      }
     </script>
   </head>
   <body>
