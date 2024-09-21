@@ -468,3 +468,12 @@ main {
     right: auto;
   }
 }
+
+.dark-mode #contact a {
+  color: var(--accent-color);
+  transition: var(--transition);
+}
+
+.dark-mode #contact a:hover {
+  color: var(--secondary-color);
+}
