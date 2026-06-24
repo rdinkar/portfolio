@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rahul Dinkar - Senior Software Engineer</title>
+    <title>Rahul Dinkar - Staff Engineer & Engineering Leader</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -40,8 +40,8 @@
         </button>
         <h1>Rahul Dinkar</h1>
         <p>
-          <i class="fas fa-code"></i> Senior Software Engineer | Frontend
-          Specialist
+          <i class="fas fa-code"></i> Staff Engineer | Frontend & Engineering
+          Leadership
         </p>
         <button id="menu-toggle" class="menu-toggle">
           <i class="fas fa-bars"></i>
@@ -90,12 +90,16 @@
       <section id="about">
         <h2><i class="fas fa-user"></i> About Me</h2>
         <p>
-          As a Senior Software Engineer with over 5 years of experience, I
-          specialize in creating efficient and scalable web applications. My
-          expertise lies in ReactJS, TypeScript, and D3.js. I have a proven
-          track record of leading teams, mentoring junior developers, and
-          delivering high-quality software solutions that drive business growth
-          and user engagement.
+          I am a frontend engineer and technical leader with over 7 years of
+          experience building large-scale web applications and the systems and
+          tooling that help teams ship faster. I lead system design and
+          architecture across modules, own technical roadmap and delivery for
+          key workstreams, mentor engineers, and interview and hire for the
+          team. Lately I have focused on AI-assisted development, automation,
+          and engineering processes that let people across design, QA, and the
+          wider org contribute safely. My core stack is ReactJS, TypeScript, and
+          D3.js, and I care a lot about performance, developer experience, and
+          clean architecture.
         </p>
       </section>
 
@@ -104,17 +108,36 @@
         <ul>
           <li>
             <i class="fas fa-laptop-code"></i>
-            <strong>Frontend Development:</strong> ReactJS, React Native, Redux,
-            React Query, D3.js, Webpack
+            <strong>Frontend:</strong> ReactJS, React Native, Redux, React
+            Query, D3.js, Webpack, Vite, AG Grid, shadcn/ui
           </li>
           <li>
             <i class="fas fa-code"></i>
-            <strong>Programming Languages:</strong> TypeScript, JavaScript
+            <strong>Languages:</strong> TypeScript, JavaScript, HTML, CSS
+          </li>
+          <li>
+            <i class="fas fa-sitemap"></i>
+            <strong>Architecture & Practices:</strong> System design, software
+            architecture, design systems, code review, testing & coverage,
+            custom ESLint, web performance optimization, CI/CD (GitHub Actions),
+            monorepo
+          </li>
+          <li>
+            <i class="fas fa-robot"></i>
+            <strong>AI & Automation:</strong> AI coding agents, LLM-assisted
+            development, agent rules & skills, AGENTS.md context, automated
+            task-to-PR pipelines
+          </li>
+          <li>
+            <i class="fas fa-users"></i>
+            <strong>Leadership:</strong> Technical strategy, roadmap & delivery
+            ownership, mentoring, interviewing & hiring, cross-functional
+            collaboration, stakeholder management
           </li>
           <li>
             <i class="fas fa-tools"></i>
-            <strong>Tools & Methodologies:</strong> Git, CI/CD, Chrome DevTools,
-            JIRA, Agile/Scrum, Cursor
+            <strong>Tools & Process:</strong> Git, Chrome DevTools, JIRA,
+            Agile/Scrum, Cursor
           </li>
         </ul>
       </section>
@@ -122,24 +145,39 @@
       <section id="experience">
         <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
         <article class="experience-item">
-          <h3>Senior Software Engineer (SDE-3)</h3>
+          <h3>Senior Frontend Engineer (SDE-3)</h3>
           <h4>Synaptic Inc, Gurugram | April 2023 - Present</h4>
           <ul>
             <li>
-              Spearheaded the frontend team, fostering a culture of innovation
-              and continuous learning
+              Led the adoption of AI coding agents across the team by writing
+              the agent rules, reusable skills, and an AGENTS.md that captures
+              the product context an agent needs to make sensible changes
             </li>
             <li>
-              Architected Tuxedo v2, a cutting-edge component library that
-              revolutionized our development process
+              Opened up the codebase to contributors outside core engineering,
+              so designers, QA, and associate teams can make small changes
+              themselves, backed by added tests, higher coverage, documented
+              context, and custom ESLint rules
             </li>
             <li>
-              Orchestrated the delivery of three major projects, resulting in a
-              20% increase in user engagement
+              Built an automated pipeline that takes a task from issue to pull
+              request: it picks up the task, makes the fix, runs the tests,
+              opens the PR, and reports back to the source
             </li>
             <li>
-              Implemented biweekly knowledge-sharing sessions, elevating team
-              expertise and problem-solving skills
+              Led the rework of our frontend CI/CD pipelines, cutting Run-All
+              checks from 39 jobs to 3 and infra time from about 4h 40m to
+              roughly 12 minutes, with deploys 30 to 40% faster overall
+            </li>
+            <li>
+              Wrote custom developer-productivity skills for slow, repetitive
+              workflows (ship-pr, figma-to-code, babysit-pr) used by the whole
+              team
+            </li>
+            <li>
+              Own the technical roadmap and delivery for frontend platform work,
+              interview engineering candidates, run biweekly knowledge-sharing
+              sessions, and mentor the team on architecture and performance
             </li>
           </ul>
         </article>
@@ -258,6 +296,24 @@
             </a>
           </div>
         </div>
+        <div class="project" data-project="ai-agent-enablement">
+          <h3><i class="fas fa-robot"></i> AI Agent Enablement</h3>
+          <p>
+            <i class="fas fa-wand-magic-sparkles"></i> Made the codebase
+            AI-agent ready for the whole team
+          </p>
+        </div>
+        <div class="project" data-project="automation-pipeline">
+          <h3><i class="fas fa-diagram-project"></i> Task-to-PR Automation</h3>
+          <p>
+            <i class="fas fa-robot"></i> Auto-fixes, tests, and opens PRs from a
+            task
+          </p>
+        </div>
+        <div class="project" data-project="cicd-optimization">
+          <h3><i class="fas fa-gauge-high"></i> CI/CD Pipeline Overhaul</h3>
+          <p><i class="fas fa-bolt"></i> 39 jobs to 3; deploys 30-40% faster</p>
+        </div>
         <div class="project" data-project="analytics-revamp">
           <h3><i class="fas fa-chart-line"></i> Analytics Module Revamp</h3>
           <p>
@@ -307,9 +363,7 @@
               Specialized in Advanced Algorithms, Machine Learning, and Web
               Technologies
             </li>
-            <li>
-              Led the Web Development for the official department website
-            </li>
+            <li>Led the Web Development for the official department website</li>
           </ul>
         </div>
         <div class="education-item">
