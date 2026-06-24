@@ -61,6 +61,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = document.querySelector(".close");
 
   const projectDetails = {
+    "ai-agent-enablement": {
+      title: "AI Agent Enablement",
+      description:
+        "Led the adoption of AI coding agents across the team. I wrote the agent rules, a set of reusable skills, and an AGENTS.md that captures the product and domain context an agent needs to make sensible changes, so engineers can confidently hand off small changes and tweaks to agents.",
+    },
+    "automation-pipeline": {
+      title: "Task-to-PR Automation Pipeline",
+      description:
+        "Designed and built an automated pipeline that takes a task from issue to pull request. It picks up the task, implements the fix, runs the tests, opens the PR, and reports the result back to the source, clearing a large share of routine engineering work.",
+    },
+    "cicd-optimization": {
+      title: "CI/CD Pipeline Overhaul",
+      description:
+        "Led the system design and rework of our frontend CI/CD pipelines. Run-All checks went from 39 jobs to 3 and infrastructure time dropped from about 4h 40m to roughly 12 minutes, with deployments 30 to 40% faster overall, driven by smart lint caching and dependency reuse.",
+    },
     "analytics-revamp": {
       title: "Analytics Module Revamp",
       description:
