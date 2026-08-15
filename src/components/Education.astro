@@ -2,15 +2,25 @@
 import { education, achievements } from '../data/education.ts';
 ---
 <section id="education" class="border-t border-hairline/10 py-20">
-  <h2 class="font-mono text-sm font-normal text-accent">06 / Education & Recognition</h2>
-  <div class="mt-8 grid gap-8 md:grid-cols-2">
+  <h2 class="font-mono text-sm font-normal text-accent">06 / Education &amp; Recognition</h2>
+  <div class="mt-8 grid gap-10 md:grid-cols-2">
     <div>
-      {education.map((e) => (
-        <div><h3 class="text-ink">{e.degree}</h3><p class="font-mono text-sm text-muted">{e.org} · {e.period}</p></div>
-      ))}
+      <h3 class="font-mono text-sm text-ink">Education</h3>
+      <div class="mt-4 space-y-4">
+        {education.map((e) => (
+          <div>
+            <p class="font-semibold text-ink">{e.degree}</p>
+            <p class="mt-0.5 font-mono text-sm text-muted">{e.org} · {e.period}</p>
+          </div>
+        ))}
+      </div>
     </div>
-    <ul class="space-y-2 text-muted">
-      {achievements.map((a) => (<li class="flex gap-2"><span class="text-accent">▹</span><span>{a}</span></li>))}
-    </ul>
+    <div>
+      <h3 class="font-mono text-sm text-ink">Recognition</h3>
+      <p class="mt-1 font-mono text-xs text-muted">Professional, at Synaptic</p>
+      <ul class="mt-4 space-y-2 text-sm text-muted">
+        {achievements.map((a) => (<li class="flex gap-2"><span class="mt-1 text-accent">▹</span><span>{a}</span></li>))}
+      </ul>
+    </div>
   </div>
 </section>

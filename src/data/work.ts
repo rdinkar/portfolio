@@ -16,9 +16,9 @@ export const work = [
   {
     title: 'Tuxedo v2.0 design system',
     problem: 'A legacy component library blocked consistent, incremental UI modernisation.',
-    approach: 'Designed a modular design system that runs alongside the legacy library for gradual migration; solved theming and isolation with scoped CSS; later prototyped a shadcn/ui-based version.',
+    approach: 'Designed a modular design system that runs alongside the legacy library for gradual migration; solved theming and isolation with scoped CSS.',
     impact: 'Teams migrated incrementally without a rewrite; consistent theming across modules.',
-    stack: ['React', 'TypeScript', 'scoped CSS', 'shadcn/ui'],
+    stack: ['React', 'TypeScript', 'scoped CSS'],
   },
   {
     title: 'Unified dataset onboarding framework',

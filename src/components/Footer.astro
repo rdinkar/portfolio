@@ -1,6 +1,8 @@
 ---
 ---
 <footer class="border-t border-hairline/10 py-8">
-  <p class="font-mono text-xs text-muted">© <span id="year"></span> Rahul Dinkar. Built with Astro.</p>
+  <div class="mx-auto max-w-5xl px-6">
+    <p class="font-mono text-xs text-muted">© <span id="year"></span> Rahul Dinkar.</p>
+  </div>
   <script is:inline>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </footer>
