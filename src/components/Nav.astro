@@ -1,0 +1,56 @@
+---
+import { sections } from '../data/nav.ts';
+import Icon from './Icon.astro';
+import ThemeToggle from './ThemeToggle.astro';
+---
+<header class="sticky top-0 z-40 border-b border-white/5 bg-canvas/80 backdrop-blur">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
+    <a href="#top" class="font-mono text-sm font-semibold text-ink">RD<span class="text-accent">.</span></a>
+    <ul class="hidden gap-6 md:flex" id="navlinks">
+      {sections.map((s) => (
+        <li><a href={`#${s.id}`} data-nav={s.id} class="text-sm text-muted transition-colors hover:text-ink">{s.label}</a></li>
+      ))}
+    </ul>
+    <div class="flex items-center gap-1">
+      <button id="palette-open" type="button" aria-label="Open command palette"
+        class="hidden items-center gap-2 rounded-md border border-white/10 px-3 py-1.5 font-mono text-xs text-muted hover:text-ink md:flex">
+        <Icon name="command" class="h-3.5 w-3.5" /> K
+      </button>
+      <ThemeToggle />
+      <button id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"
+        class="grid h-11 w-11 place-items-center rounded-md text-muted md:hidden">
+        <Icon name="menu" class="h-6 w-6" />
+      </button>
+    </div>
+  </nav>
+  <ul id="mobile-menu" hidden class="border-t border-white/5 px-6 py-2 md:hidden">
+    {sections.map((s) => (
+      <li><a href={`#${s.id}`} class="block py-2 text-muted hover:text-ink">{s.label}</a></li>
+    ))}
+  </ul>
+</header>
+<script>
+  const menu = document.getElementById('mobile-menu');
+  const mt = document.getElementById('menu-toggle');
+  mt.addEventListener('click', () => {
+    const open = menu.hasAttribute('hidden');
+    if (open) menu.removeAttribute('hidden'); else menu.setAttribute('hidden', '');
+    mt.setAttribute('aria-expanded', String(open));
+  });
+  menu.addEventListener('click', (e) => { if (e.target.tagName === 'A') { menu.setAttribute('hidden',''); mt.setAttribute('aria-expanded','false'); } });
+  const links = [...document.querySelectorAll('[data-nav]')];
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        links.forEach((l) => l.removeAttribute('aria-current'));
+        const a = links.find((l) => l.dataset.nav === en.target.id);
+        if (a) a.setAttribute('aria-current', 'true');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('main section[id]').forEach((s) => spy.observe(s));
+</script>
+<style>
+  [data-nav][aria-current='true'] { color: rgb(var(--text)); }
+  [data-nav][aria-current='true']::after { content: ''; display: block; height: 2px; background: rgb(var(--accent)); }
+</style>
