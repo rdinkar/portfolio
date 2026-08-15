@@ -157,9 +157,12 @@ download is the **newest** one (`resume.pdf` in repo root, refreshed from the la
 
 ## 8. Deployment
 
-- Convert `rdinkar.github.io` from serving raw HTML to an **Astro build via GitHub
-  Actions** deploying to GitHub Pages (`actions/deploy-pages`). `base: '/'` (user site,
-  served at root).
+- The repo is the **project repo `rdinkar/portfolio`**, served at
+  `https://rdinkar.github.io/portfolio/` (verified: no CNAME, Pages currently `legacy`
+  build from `main` root). Convert from serving raw HTML to an **Astro build via GitHub
+  Actions** (`actions/deploy-pages`). Astro config: `site: 'https://rdinkar.github.io'`,
+  **`base: '/portfolio'`**. Switch the Pages source to "GitHub Actions" (build_type
+  `workflow`) — one-time repo setting.
 - Résumé PDF remains at a stable path for the download link.
 - Verify the live site post-deploy (build succeeds, links work, résumé downloads,
   analytics loads only on prod host).
