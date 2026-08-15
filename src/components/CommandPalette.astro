@@ -1,0 +1,58 @@
+---
+import { sections } from '../data/nav.ts';
+import { profile } from '../data/profile.ts';
+const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // normalized (no trailing slash)
+const commands = [
+  ...sections.map((s) => ({ label: `Go to ${s.label}`, href: `#${s.id}`, keywords: 'section jump' })),
+  { label: 'Download résumé', href: `${base}/resume.pdf`, keywords: 'cv pdf', download: true },
+  { label: 'Copy email', action: 'copy-email', keywords: 'contact mail' },
+  ...profile.socials.map((s) => ({ label: `Open ${s.label}`, href: s.href, external: true, keywords: 'social link' })),
+];
+---
+<div id="palette" hidden class="fixed inset-0 z-50">
+  <div id="palette-backdrop" class="absolute inset-0 bg-black/60"></div>
+  <div role="dialog" aria-modal="true" aria-label="Command palette"
+    class="absolute left-1/2 top-24 w-[92%] max-w-lg -translate-x-1/2 overflow-hidden rounded-xl border border-white/10 bg-surface shadow-2xl">
+    <input id="palette-input" type="text" placeholder="Type a command…" autocomplete="off"
+      class="w-full bg-transparent px-4 py-3 text-ink outline-none placeholder:text-muted" />
+    <ul id="palette-list" class="max-h-72 overflow-y-auto border-t border-white/5"></ul>
+  </div>
+</div>
+<script type="application/json" id="palette-data" set:html={JSON.stringify({ commands, email: profile.email })}></script>
+<script>
+  import { filterCommands } from '../lib/commands.js';
+  const { commands, email } = JSON.parse(document.getElementById('palette-data').textContent);
+  const palette = document.getElementById('palette');
+  const input = document.getElementById('palette-input');
+  const list = document.getElementById('palette-list');
+  let active = 0, current = commands;
+  const open = () => { palette.removeAttribute('hidden'); input.value=''; render(commands); input.focus(); };
+  const close = () => palette.setAttribute('hidden','');
+  const run = (c) => {
+    close();
+    if (c.action === 'copy-email') { navigator.clipboard?.writeText(email); return; }
+    if (c.external) { window.open(c.href, '_blank', 'noopener'); return; }
+    if (c.download) { const a=document.createElement('a'); a.href=c.href; a.download=''; a.click(); return; }
+    if (c.href) location.hash = c.href.replace('#','#');
+  };
+  const render = (items) => {
+    current = items; active = 0;
+    list.innerHTML = items.map((c,i) => `<li data-i="${i}" class="cursor-pointer px-4 py-2.5 text-sm ${i===0?'bg-white/5 text-ink':'text-muted'}">${c.label}</li>`).join('');
+  };
+  const setActive = (i) => {
+    active = (i + current.length) % current.length;
+    [...list.children].forEach((li,idx) => li.className = `cursor-pointer px-4 py-2.5 text-sm ${idx===active?'bg-white/5 text-ink':'text-muted'}`);
+  };
+  input.addEventListener('input', () => render(filterCommands(commands, input.value)));
+  list.addEventListener('click', (e) => { const li = e.target.closest('[data-i]'); if (li) run(current[+li.dataset.i]); });
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); palette.hasAttribute('hidden') ? open() : close(); return; }
+    if (palette.hasAttribute('hidden')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active+1); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active-1); }
+    if (e.key === 'Enter') { e.preventDefault(); if (current[active]) run(current[active]); }
+  });
+  document.getElementById('palette-open')?.addEventListener('click', open);
+  document.getElementById('palette-backdrop').addEventListener('click', close);
+</script>

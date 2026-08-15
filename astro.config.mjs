@@ -7,4 +7,5 @@ export default defineConfig({
   base: '/portfolio',
   trailingSlash: 'ignore',
   integrations: [tailwind(), sitemap()],
+  vite: { build: { assetsInlineLimit: 0 } },
 });
