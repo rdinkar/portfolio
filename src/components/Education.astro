@@ -1,0 +1,16 @@
+---
+import { education, achievements } from '../data/education.ts';
+---
+<section id="education" class="border-t border-white/5 py-20">
+  <p class="font-mono text-sm text-accent">06 / Education & Recognition</p>
+  <div class="mt-8 grid gap-8 md:grid-cols-2">
+    <div>
+      {education.map((e) => (
+        <div><h3 class="text-ink">{e.degree}</h3><p class="font-mono text-sm text-muted">{e.org} · {e.period}</p></div>
+      ))}
+    </div>
+    <ul class="space-y-2 text-muted">
+      {achievements.map((a) => (<li class="flex gap-2"><span class="text-accent">▹</span><span>{a}</span></li>))}
+    </ul>
+  </div>
+</section>
