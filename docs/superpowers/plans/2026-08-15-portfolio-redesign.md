@@ -235,9 +235,9 @@ git commit -m "chore: scaffold Astro + Tailwind, remove legacy static site"
 ---
 interface Props { title: string; description: string }
 const { title, description } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // normalized (no trailing slash)
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const og = `${Astro.site}${base.replace(/\/$/, '')}/og.png`;
+const og = new URL(`${base}/og.png`, Astro.site).href;
 const person = {
   '@context': 'https://schema.org', '@type': 'Person',
   name: 'Rahul Dinkar', jobTitle: 'Senior Frontend Engineer',
@@ -259,7 +259,7 @@ const person = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -762,7 +762,7 @@ Expected: PASS (2 tests).
 ---
 import { profile } from '../data/profile.ts';
 import Icon from './Icon.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // normalized (no trailing slash)
 ---
 <section class="pt-24 pb-12 md:pt-32">
   <p class="font-mono text-sm text-accent">{profile.subhead}</p>
@@ -770,7 +770,7 @@ const base = import.meta.env.BASE_URL;
   <p class="mt-4 font-mono text-sm text-muted">{profile.location}</p>
   <div class="mt-8 flex flex-wrap items-center gap-3">
     <a href="#work" class="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-canvas">View work</a>
-    <a href={`${base}resume.pdf`} download class="flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-semibold text-ink hover:border-accent">
+    <a href={`${base}/resume.pdf`} download class="flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-semibold text-ink hover:border-accent">
       <Icon name="download" class="h-4 w-4" /> Résumé
     </a>
     <a href={`mailto:${profile.email}`} class="flex items-center gap-2 rounded-md border border-white/15 px-5 py-2.5 text-sm font-semibold text-ink hover:border-accent">
@@ -1167,10 +1167,10 @@ Expected: PASS (all tests across both test files).
 ---
 import { sections } from '../data/nav.ts';
 import { profile } from '../data/profile.ts';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // normalized (no trailing slash)
 const commands = [
   ...sections.map((s) => ({ label: `Go to ${s.label}`, href: `#${s.id}`, keywords: 'section jump' })),
-  { label: 'Download résumé', href: `${base}resume.pdf`, keywords: 'cv pdf', download: true },
+  { label: 'Download résumé', href: `${base}/resume.pdf`, keywords: 'cv pdf', download: true },
   { label: 'Copy email', action: 'copy-email', keywords: 'contact mail' },
   ...profile.socials.map((s) => ({ label: `Open ${s.label}`, href: s.href, external: true, keywords: 'social link' })),
 ];
