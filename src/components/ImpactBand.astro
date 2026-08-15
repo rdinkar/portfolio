@@ -13,16 +13,25 @@ import { metrics } from '../data/metrics.ts';
   ))}
 </section>
 <script>
-  import { countUpFrames } from '../lib/animate.js';
+  import { countUpValue } from '../lib/animate.js';
+  const DURATION = 1200;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const els = document.querySelectorAll('[data-metric]');
   const run = (el) => {
+    if (reduce) return;
     const target = Number(el.dataset.value);
     const prefix = el.dataset.prefix, suffix = el.dataset.suffix;
-    if (reduce) return;
-    const frames = countUpFrames(target, 40);
-    let i = 0;
-    const tick = () => { el.textContent = `${prefix}${frames[i]}${suffix}`; if (++i < frames.length) requestAnimationFrame(tick); };
+    const finalText = el.dataset.display || `${prefix}${target}${suffix}`;
+    const start = performance.now();
+    const tick = (now) => {
+      const elapsed = now - start;
+      if (elapsed >= DURATION) {
+        el.textContent = finalText;
+        return;
+      }
+      el.textContent = `${prefix}${countUpValue(target, elapsed, DURATION)}${suffix}`;
+      requestAnimationFrame(tick);
+    };
     requestAnimationFrame(tick);
   };
   const io = new IntersectionObserver((entries, obs) => {

@@ -11,3 +11,9 @@ export function countUpFrames(target, steps) {
   frames[frames.length - 1] = target;
   return frames;
 }
+
+export function countUpValue(target, elapsedMs, durationMs) {
+  if (durationMs <= 0) return target;
+  if (elapsedMs >= durationMs) return target;
+  return Math.round(target * easeOutCubic(Math.min(1, elapsedMs / durationMs)));
+}
