@@ -10,6 +10,7 @@ export default {
         surface: 'rgb(var(--surface) / <alpha-value>)',
         ink: 'rgb(var(--text) / <alpha-value>)',
         muted: 'rgb(var(--muted) / <alpha-value>)',
+        hairline: 'rgb(var(--border) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

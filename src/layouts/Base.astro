@@ -6,7 +6,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const og = new URL(`${base}/og.png`, Astro.site).href;
 const person = {
   '@context': 'https://schema.org', '@type': 'Person',
-  name: 'Rahul Dinkar', jobTitle: 'Senior Frontend Engineer',
+  name: 'Rahul Dinkar', jobTitle: 'Staff-level Frontend Engineer',
   url: canonical, email: 'mailto:dinkarrahul28@gmail.com',
   address: { '@type': 'PostalAddress', addressLocality: 'Gurugram', addressCountry: 'IN' },
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'Indian Institute of Technology Roorkee' },

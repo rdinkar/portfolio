@@ -3,7 +3,7 @@ import { sections } from '../data/nav.ts';
 import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
 ---
-<header class="sticky top-0 z-40 border-b border-white/5 bg-canvas/80 backdrop-blur">
+<header class="sticky top-0 z-40 border-b border-hairline/10 bg-canvas/80 backdrop-blur">
   <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
     <a href="#top" class="font-mono text-sm font-semibold text-ink">RD<span class="text-accent">.</span></a>
     <ul class="hidden gap-6 md:flex" id="navlinks">
@@ -13,7 +13,7 @@ import ThemeToggle from './ThemeToggle.astro';
     </ul>
     <div class="flex items-center gap-1">
       <button id="palette-open" type="button" aria-label="Open command palette"
-        class="hidden items-center gap-2 rounded-md border border-white/10 px-3 py-1.5 font-mono text-xs text-muted hover:text-ink md:flex">
+        class="hidden items-center gap-2 rounded-md border border-hairline/15 px-3 py-1.5 font-mono text-xs text-muted hover:text-ink md:flex">
         <Icon name="command" class="h-3.5 w-3.5" /> K
       </button>
       <ThemeToggle />
@@ -23,9 +23,9 @@ import ThemeToggle from './ThemeToggle.astro';
       </button>
     </div>
   </nav>
-  <ul id="mobile-menu" hidden class="border-t border-white/5 px-6 py-2 md:hidden">
+  <ul id="mobile-menu" hidden class="border-t border-hairline/10 px-6 py-2 md:hidden">
     {sections.map((s) => (
-      <li><a href={`#${s.id}`} class="block py-2 text-muted hover:text-ink">{s.label}</a></li>
+      <li><a href={`#${s.id}`} class="block py-3 text-muted hover:text-ink">{s.label}</a></li>
     ))}
   </ul>
 </header>

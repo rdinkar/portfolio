@@ -2,11 +2,11 @@
 import { work, projects } from '../data/work.ts';
 import Icon from './Icon.astro';
 ---
-<section id="work" class="border-t border-white/5 py-20">
-  <p class="font-mono text-sm text-accent">01 / Selected work</p>
+<section id="work" class="border-t border-hairline/10 py-20">
+  <h2 class="font-mono text-sm font-normal text-accent">01 / Selected work</h2>
   <div class="mt-8 grid gap-4">
     {work.map((w, i) => (
-      <article class="reveal rounded-lg border border-white/10 bg-white/5 p-6 transition-colors hover:border-accent/40">
+      <article class="reveal rounded-lg border border-hairline/15 bg-hairline/5 p-6 transition-colors hover:border-accent/40">
         <div class="flex items-baseline gap-3">
           <span class="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
           <h3 class="text-xl font-semibold text-ink">{w.title}</h3>
@@ -17,7 +17,7 @@ import Icon from './Icon.astro';
           <div><dt class="inline font-mono text-accent">Impact — </dt><dd class="inline text-ink">{w.impact}</dd></div>
         </dl>
         <ul class="mt-4 flex flex-wrap gap-2">
-          {w.stack.map((s) => (<li class="rounded border border-white/10 px-2 py-0.5 font-mono text-xs text-muted">{s}</li>))}
+          {w.stack.map((s) => (<li class="rounded border border-hairline/15 px-2 py-0.5 font-mono text-xs text-muted">{s}</li>))}
         </ul>
       </article>
     ))}
@@ -26,7 +26,7 @@ import Icon from './Icon.astro';
   <h3 class="mt-12 font-mono text-sm text-muted">Personal projects</h3>
   <div class="mt-4 grid gap-4 md:grid-cols-2">
     {projects.map((p) => (
-      <article class="reveal rounded-lg border border-white/10 bg-white/5 p-6">
+      <article class="reveal rounded-lg border border-hairline/15 bg-hairline/5 p-6">
         <h4 class="text-lg font-semibold text-ink">{p.title}</h4>
         <p class="mt-2 text-sm text-muted">{p.description}</p>
         <div class="mt-4 flex gap-4 font-mono text-sm">
