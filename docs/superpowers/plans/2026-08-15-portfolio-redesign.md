@@ -208,7 +208,7 @@ import '../styles/global.css';
 npm install
 npm run build
 ```
-Expected: `dist/portfolio/index.html` produced, exit 0.
+Expected: `dist/index.html` produced, exit 0.
 
 - [ ] **Step 6: Commit**
 
@@ -309,7 +309,7 @@ import Base from '../layouts/Base.astro';
 
 ```bash
 npm run build
-grep -q 'application/ld+json' dist/portfolio/index.html && grep -q 'og:image' dist/portfolio/index.html && echo OK
+grep -q 'application/ld+json' dist/index.html && grep -q 'og:image' dist/index.html && echo OK
 ```
 Expected: `OK`.
 
@@ -680,7 +680,7 @@ import Nav from '../components/Nav.astro';
 - [ ] **Step 4: Build and verify nav renders**
 
 ```bash
-npm run build && grep -q 'id="theme-toggle"' dist/portfolio/index.html && grep -q 'data-nav="work"' dist/portfolio/index.html && echo OK
+npm run build && grep -q 'id="theme-toggle"' dist/index.html && grep -q 'data-nav="work"' dist/index.html && echo OK
 ```
 Expected: `OK`.
 
@@ -840,7 +840,7 @@ Replace the placeholder `#work` region: add before `<main>` content a hero, and 
 - [ ] **Step 8: Build + test**
 
 ```bash
-npm test && npm run build && grep -q 'data-metric' dist/portfolio/index.html && echo OK
+npm test && npm run build && grep -q 'data-metric' dist/index.html && echo OK
 ```
 Expected: tests PASS and `OK`.
 
@@ -979,7 +979,7 @@ Update `src/pages/index.astro` imports and body so `<main>` contains, in order: 
 - [ ] **Step 7: Build and verify**
 
 ```bash
-npm run build && grep -q 'id="contact"' dist/portfolio/index.html && grep -q 'AGENTS.md' dist/portfolio/index.html; echo "skills present: $?"
+npm run build && grep -q 'id="contact"' dist/index.html && grep -q 'AGENTS.md' dist/index.html; echo "skills present: $?"
 ```
 Expected: build OK; `id="contact"` present.
 
@@ -1085,8 +1085,8 @@ In `src/pages/index.astro`, import `Work` and `Experience` and replace the two p
 
 ```bash
 npm run build
-grep -q 'Selected work' dist/portfolio/index.html && grep -q '39 → 3\|39→3' dist/portfolio/index.html; echo done
-grep -c 'reveal' dist/portfolio/index.html
+grep -q 'Selected work' dist/index.html && grep -q '39 → 3\|39→3' dist/index.html; echo done
+grep -c 'reveal' dist/index.html
 ```
 Expected: build OK; work + experience content present.
 
@@ -1229,7 +1229,7 @@ Add `import CommandPalette from '../components/CommandPalette.astro';` and rende
 - [ ] **Step 7: Build + test**
 
 ```bash
-npm test && npm run build && grep -q 'id="palette"' dist/portfolio/index.html && echo OK
+npm test && npm run build && grep -q 'id="palette"' dist/index.html && echo OK
 ```
 Expected: tests PASS, `OK`.
 
@@ -1281,7 +1281,7 @@ In `src/pages/index.astro`, add before `</Base>`:
 - [ ] **Step 4: Build and verify**
 
 ```bash
-npm run build && grep -q 'is-visible' dist/portfolio/assets/*.css 2>/dev/null; grep -q 'reveal' dist/portfolio/index.html && echo OK
+npm run build && grep -q 'is-visible' dist/assets/*.css 2>/dev/null; grep -q 'reveal' dist/index.html && echo OK
 ```
 Expected: `OK`.
 
@@ -1338,7 +1338,7 @@ If using `og.svg`, update `Base.astro` `og` variable to `og.svg`.
 - [ ] **Step 5: Build and verify assets copied**
 
 ```bash
-npm run build && ls dist/portfolio/resume.pdf dist/portfolio/favicon.svg dist/portfolio/robots.txt && echo OK
+npm run build && ls dist/resume.pdf dist/favicon.svg dist/robots.txt && echo OK
 ```
 Expected: files exist, `OK`.
 
@@ -1438,9 +1438,9 @@ Then load `http://localhost:4321/portfolio/` and confirm: hero renders, metrics 
 - [ ] **Step 2: SEO/a11y checks**
 
 ```bash
-grep -q 'application/ld+json' dist/portfolio/index.html
-grep -q 'og:image' dist/portfolio/index.html
-test -f dist/portfolio/sitemap-index.xml && echo "sitemap OK"
+grep -q 'application/ld+json' dist/index.html
+grep -q 'og:image' dist/index.html
+test -f dist/sitemap-index.xml && echo "sitemap OK"
 ```
 Manually run Lighthouse (Chrome DevTools) against the preview; confirm ≥ 95 in all four categories, and check color-contrast + keyboard-only navigation.
 
@@ -1448,7 +1448,7 @@ Manually run Lighthouse (Chrome DevTools) against the preview; confirm ≥ 95 in
 
 Confirm no asset uses a root-absolute path that ignores `/portfolio/` base (search built HTML for `href="/` and `src="/` that aren't `/portfolio/`).
 ```bash
-grep -oE '(href|src)="/[^"]*"' dist/portfolio/index.html | grep -v '/portfolio/' || echo "no bad absolute paths"
+grep -oE '(href|src)="/[^"]*"' dist/index.html | grep -v '/portfolio/' || echo "no bad absolute paths"
 ```
 Expected: `no bad absolute paths`.
 
