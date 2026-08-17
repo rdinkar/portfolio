@@ -4,7 +4,7 @@ import { profile } from '../data/profile.ts';
 const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // normalized (no trailing slash)
 const commands = [
   ...sections.map((s) => ({ label: `Go to ${s.label}`, href: `#${s.id}`, keywords: 'section jump' })),
-  { label: 'Download résumé', href: `${base}/resume.pdf`, keywords: 'cv pdf', download: true },
+  { label: 'Download résumé', href: `${base}/resume.pdf`, keywords: 'resume cv pdf', download: true },
   { label: 'Copy email', action: 'copy-email', keywords: 'contact mail' },
   ...profile.socials.map((s) => ({ label: `Open ${s.label}`, href: s.href, external: true, keywords: 'social link' })),
 ];
@@ -47,7 +47,13 @@ const commands = [
   input.addEventListener('input', () => render(filterCommands(commands, input.value)));
   list.addEventListener('click', (e) => { const li = e.target.closest('[data-i]'); if (li) run(current[+li.dataset.i]); });
   document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); palette.hasAttribute('hidden') ? open() : close(); return; }
+    // "/" opens the palette (standard search shortcut; no system/browser conflict),
+    // but never while the user is typing in a field.
+    if (e.key === '/' && palette.hasAttribute('hidden')) {
+      const t = e.target;
+      const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+      if (!typing) { e.preventDefault(); open(); return; }
+    }
     if (palette.hasAttribute('hidden')) return;
     if (e.key === 'Escape') close();
     if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active+1); }
