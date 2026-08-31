@@ -1,0 +1,15 @@
+---
+import { profile } from '../data/profile.ts';
+import Icon from './Icon.astro';
+---
+<section id="contact" class="reveal border-t border-hairline/10 py-20">
+  <h2 class="font-mono text-sm font-normal text-accent">07 / Contact</h2>
+  <p class="mt-6 text-3xl font-bold">Let's build something.</p>
+  <p class="mt-4 max-w-xl text-muted">Based in Gurugram, India and open to remote. I'm looking for staff-level roles across frontend systems, platforms, and developer experience — email is the fastest way to reach me.</p>
+  <div class="mt-6 flex flex-wrap gap-3">
+    <a href={`mailto:${profile.email}`} aria-label={`Email ${profile.email}`} class="flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-canvas"><Icon name="mail" class="h-4 w-4" /> Email</a>
+    {profile.socials.map((s) => (
+      <a href={s.href} target="_blank" rel="noopener" class="flex items-center gap-2 rounded-md border border-hairline/25 px-5 py-2.5 text-sm font-semibold text-ink hover:border-accent"><Icon name={s.icon} class="h-4 w-4" /> {s.label}</a>
+    ))}
+  </div>
+</section>

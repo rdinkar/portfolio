@@ -1,0 +1,58 @@
+---
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const og = new URL(`${base}/og.png`, Astro.site).href;
+const person = {
+  '@context': 'https://schema.org', '@type': 'Person',
+  name: 'Rahul Dinkar', jobTitle: 'Staff-level Frontend Engineer',
+  url: canonical, email: 'mailto:dinkarrahul28@gmail.com',
+  address: { '@type': 'PostalAddress', addressLocality: 'Gurugram', addressCountry: 'IN' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Indian Institute of Technology Roorkee' },
+  sameAs: [
+    'https://www.linkedin.com/in/rahul-dinkar-593161130/',
+    'https://github.com/rdinkar',
+    'https://medium.com/@rahul.dinkar',
+  ],
+};
+---
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+    <script set:html={JSON.stringify(person)} type="application/ld+json" />
+    <script is:inline>
+      (() => {
+        const t = localStorage.getItem('theme');
+        const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+    <script is:inline>
+      if (location.hostname === 'rdinkar.github.io') {
+        const s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2N872D2WD8';
+        s.async = true; document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date()); gtag('config', 'G-2N872D2WD8');
+      }
+    </script>
+  </head>
+  <body><slot /></body>
+</html>

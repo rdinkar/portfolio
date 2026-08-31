@@ -1,0 +1,41 @@
+---
+import { metrics } from '../data/metrics.ts';
+---
+<section aria-label="Impact highlights" class="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-hairline/15 bg-hairline/5 md:grid-cols-4">
+  {metrics.map((m) => (
+    <div class="bg-canvas p-5">
+      <div class="font-mono text-3xl font-bold text-accent"
+        data-metric data-value={m.value} data-prefix={m.prefix ?? ''} data-suffix={m.suffix ?? ''} data-display={m.display ?? ''}>
+        {m.display ?? `${m.prefix ?? ''}${m.value}${m.suffix ?? ''}`}
+      </div>
+      <p class="mt-2 text-sm text-muted">{m.label}</p>
+    </div>
+  ))}
+</section>
+<script>
+  import { countUpValue } from '../lib/animate.js';
+  const DURATION = 1200;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('[data-metric]');
+  const run = (el) => {
+    if (reduce) return;
+    const target = Number(el.dataset.value);
+    const prefix = el.dataset.prefix, suffix = el.dataset.suffix;
+    const finalText = el.dataset.display || `${prefix}${target}${suffix}`;
+    const start = performance.now();
+    const tick = (now) => {
+      const elapsed = now - start;
+      if (elapsed >= DURATION) {
+        el.textContent = finalText;
+        return;
+      }
+      el.textContent = `${prefix}${countUpValue(target, elapsed, DURATION)}${suffix}`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach((e) => { if (e.isIntersecting) { run(e.target); obs.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  els.forEach((el) => io.observe(el));
+</script>

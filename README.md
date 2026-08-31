@@ -1,30 +1,26 @@
-# Rahul Dinkar - Senior Software Engineer Portfolio
+# Rahul Dinkar — Portfolio
 
-This repository contains the source code for Rahul Dinkar's personal portfolio website. The site showcases Rahul's skills, experience, and projects as a Senior Software Engineer specializing in frontend development.
+Personal portfolio site for Rahul Dinkar, built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com).
 
-## Live Demo
+Live at: [https://rdinkar.github.io/portfolio/](https://rdinkar.github.io/portfolio/)
 
-You can view the live demo of this portfolio at: [https://rdinkar.github.io/portfolio/](https://rdinkar.github.io/portfolio/)
+## Tech Stack
 
-## Features
+- [Astro](https://astro.build) — static site generator
+- [Tailwind CSS](https://tailwindcss.com) — utility-first styling
+- `@astrojs/sitemap` — sitemap generation
 
-- Responsive design for various screen sizes
-- Dark mode toggle with system preference detection
-- Smooth scrolling navigation
-- Interactive project modals
-- Mobile-friendly navigation menu
-- Google Analytics integration for visitor tracking
-- Downloadable resume
+## Local Development
 
-## Technologies Used
+```bash
+npm install       # install dependencies
+npm run dev       # start the local dev server
+npm run build     # build the production site to dist/
+npm test          # run the test suite
+```
 
-- HTML5
-- CSS3 (with custom properties for theming)
-- JavaScript (ES6+)
-- Font Awesome for icons
+## Deployment
 
-## Structure
+The site auto-deploys to [https://rdinkar.github.io/portfolio/](https://rdinkar.github.io/portfolio/) via the GitHub Actions workflow in `.github/workflows/deploy.yml` on every push to `main`.
 
-- `index.html`: The main HTML file containing the structure of the portfolio
-- `styles.css`: CSS file with all the styles for the website
-- `script.js`: JavaScript file containing all the interactive functionality
+> **One-time repo setup:** for the workflow to publish successfully, the repository's GitHub Pages source must be set to **"GitHub Actions"** (build type `workflow`) under Settings → Pages → Source — this only needs to be done once.

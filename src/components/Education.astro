@@ -1,0 +1,25 @@
+---
+import { education, achievements } from '../data/education.ts';
+---
+<section id="education" class="border-t border-hairline/10 py-20">
+  <h2 class="font-mono text-sm font-normal text-accent">06 / Education &amp; Recognition</h2>
+  <div class="reveal mt-8 space-y-10">
+    <div>
+      <h3 class="text-lg font-semibold text-ink">Education</h3>
+      <div class="mt-2">
+        {education.map((e) => (
+          <div>
+            <p class="text-ink">{e.degree}</p>
+            <p class="font-mono text-sm text-muted">{e.org} · {e.period}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-ink">Recognition</h3>
+      <ul class="mt-3 space-y-1.5 text-sm text-muted">
+        {achievements.map((a) => (<li class="flex gap-2"><span class="text-accent">▹</span><span>{a}</span></li>))}
+      </ul>
+    </div>
+  </div>
+</section>

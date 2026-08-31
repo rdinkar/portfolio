@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rdinkar.github.io/portfolio/sitemap-index.xml
